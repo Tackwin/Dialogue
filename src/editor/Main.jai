@@ -25,6 +25,9 @@ Editor_Ui :: struct {
 
 #scope_export
 
+#placeholder Client_Code;
+#placeholder client_code;
+
 render_imgui :: (state: *State.Editor) {
 	dockspace_flags : ImGui.DockNodeFlags = .PassthruCentralNode;
 	window_flags : ImGui.WindowFlags = .NoDocking;
@@ -48,7 +51,7 @@ render_imgui :: (state: *State.Editor) {
 	dockspace_id := ImGui.GetID("MyDockSpace");
 	ImGui.DockSpace(dockspace_id, .{ 0.0, 0.0 }, dockspace_flags);
 
-	GUI.main_window(state);
+	GUI.main_window(state, client_code);
 }
 
 main :: () {
