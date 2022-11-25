@@ -1,3 +1,5 @@
+#scope_export
+
 #scope_file
 
 ImGui :: #import "my_imgui";
@@ -5,6 +7,7 @@ ImGui_GL :: #import "my_imgui/imgui_impl_gl";
 
 GUI :: #import "editor/front/Gui";
 State :: #import "editor/back/State";
+Meta :: #import "dialogue/Meta";
 
 #import "Random";
 #import "File";
@@ -25,7 +28,6 @@ Editor_Ui :: struct {
 
 #scope_export
 
-#placeholder Client_Code;
 #placeholder client_code;
 
 render_imgui :: (state: *State.Editor) {
@@ -51,7 +53,7 @@ render_imgui :: (state: *State.Editor) {
 	dockspace_id := ImGui.GetID("MyDockSpace");
 	ImGui.DockSpace(dockspace_id, .{ 0.0, 0.0 }, dockspace_flags);
 
-	GUI.main_window(state, client_code);
+	GUI.main_window(state, *client_code);
 }
 
 main :: () {

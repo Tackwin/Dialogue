@@ -54,11 +54,11 @@ build :: () {
 				phase_message := cast(*Message_Phase) message;
 
 				if phase_message.phase != .TYPECHECKED_ALL_WE_CAN continue;
+				typechecked_sync();
 				if generated_code continue;
 				generated_code = true;
 
 				serialized := serialize();
-				print("zeaze\n");
 				add_build_string(serialized, editor);
 
 			break;
